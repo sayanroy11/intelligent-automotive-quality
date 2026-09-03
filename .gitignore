@@ -1,0 +1,13 @@
+.venv/
+venv/
+.env
+__pycache__/
+*.py[cod]
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.pytest_cache/
+chroma_db/
+*.db
+data/processed/*.csv
