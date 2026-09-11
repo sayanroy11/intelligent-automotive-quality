@@ -30,7 +30,7 @@ def create_inspection(tx,row):
         i.inspection_result=$inspection_result,
         i.severity=$severity 
         
-    MERGE (c: Component {componet_id: $component_id})
+    MERGE (c: Component {component_id: $component_id})
     SET c.component_type=$component_type
     
     MERGE (s:Supplier {name: $supplier})
