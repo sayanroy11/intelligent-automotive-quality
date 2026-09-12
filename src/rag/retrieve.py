@@ -1,15 +1,17 @@
+from pathlib import Path
 from sentence_transformers import SentenceTransformer
 import chromadb
 
-CHROMA_PATH="chroma_db"
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+CHROMA_PATH = PROJECT_ROOT / "chroma_db"
 COLLECTION_NAME='automotive_documents'
 def retrieve_documents(query,top_k=3):
     model=SentenceTransformer('all-MiniLM-L6-v2')
-    client=chromadb.PersistentClient(path=CHROMA_PATH)
+    client=chromadb.PersistentClient(path=str(CHROMA_PATH))
     collection=client.get_collection(name=COLLECTION_NAME)
-    query_embedding=model.encode_query(query).tolist()
+    query_embedding=model.encode(query).tolist()
     results=collection.query(
-        query_embeddings=[query_embedding],
+        query_embeddings=query_embedding,
         n_results=top_k
     )
     return results
