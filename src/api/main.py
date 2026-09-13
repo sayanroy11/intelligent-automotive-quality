@@ -44,5 +44,5 @@ def ask_question(request:QuestionRequest):
     except Exception as error:
         raise HTTPException(
             status_code=500,
-            detail=str(error)
+            detail='Failed to process the quality investigation request'
         )
