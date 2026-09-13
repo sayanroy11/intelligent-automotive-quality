@@ -22,6 +22,8 @@ def build_graph_context():
 
     graph_context = "\n".join(lines)
     return graph_context
+
+
 def build_document_context(results):
     documents=results['documents'][0]
     metadatas=results['metadatas'][0]
@@ -33,6 +35,7 @@ def build_document_context(results):
             f'Source: {metadata['source']}\n{document}'
         )
     return '\n\n'.join(context_parts)
+
 
 def answer_quality_question(question):
     route=route_question(question)
@@ -86,6 +89,7 @@ Answer:
     response.raise_for_status()
     answer=response.json()['response']
     return answer,route,rag_results
+
 
 if __name__=='__main__':
     question=(
